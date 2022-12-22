@@ -9,7 +9,7 @@ import java.util.Scanner;
  * Create channel
  * Display subscriber count
  * Given growth rate and subscriber goal, show how many months it will take to reach sub goal
- * Given subscriber goal and number of months, show growth rate needed to reach sub goal in that time (display subs gained per month) 
+ * Given subscriber goal and number of months, show growth rate needed to reach sub goal in that time (display subs gained per month)
  */
 
 public class YouTubeChannelDriver {
