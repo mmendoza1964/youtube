@@ -20,27 +20,30 @@ public class YouTubeChannelDriver {
         int subscribers;
         double channelGrowthRate;
 
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println("Hello, welcome to the channel growth driver!");
 
         displayChannelStatus(channel);
 
-        timeToSubGoal(channel, scanner);
+        timeToSubGoal(channel);
 
     }
 
-    private static void timeToSubGoal(YouTubeChannel channel, Scanner scanner) {
+    private static void timeToSubGoal(YouTubeChannel channel) {
         double channelGrowthRate;
+
+        Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter a growth rate percentage: ");
         channelGrowthRate = Double.parseDouble(scanner.nextLine());
-        System.out.println("Channel growth rate is: " + channelGrowthRate);
+        // System.out.println("Channel growth rate is: " + channelGrowthRate);
+        System.out.print("Enter your subscriber goal: ");
+        int subGoal = Integer.parseInt(scanner.nextLine());
+        System.out.println("Sub goal is: " + subGoal);
         System.out.println();
 
         int monthsPassed = 0;
         int newSubscriberCount = channel.subscribers();
-        int subGoal = 100000;
+        
 
         while (newSubscriberCount < subGoal) {
             newSubscriberCount *= channelGrowthRate;
@@ -52,6 +55,8 @@ public class YouTubeChannelDriver {
 
         System.out.println("It would take roughly " + ((double) monthsPassed / 12) +
             monthsPassed % 12 + " years to reached this goal");
+
+        scanner.close();
     }
 
     private static void displayChannelStatus(YouTubeChannel channel) {
