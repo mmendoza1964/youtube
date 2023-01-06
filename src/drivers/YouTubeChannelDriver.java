@@ -14,25 +14,28 @@ import java.util.Scanner;
 
 public class YouTubeChannelDriver {
     public static void main(String[] args) {
-        YouTubeChannel channel = new YouTubeChannel(
-                "Counting Numbers", 11000);
+        // YouTubeChannel channel = new YouTubeChannel(
+        //         "Counting Numbers", 11000);
 
         int subscribers;
         double channelGrowthRate;
 
         System.out.println("Hello, welcome to the channel growth driver!");
 
-        displayChannelStatus(channel);
+        // displayChannelStatus(channel);
 
-        timeToSubGoal(channel);
+        // timeToSubGoal(channel);
 
     }
 
-    private static void timeToSubGoal(YouTubeChannel channel) {
+    private static void timeToSubGoal() {
         double channelGrowthRate;
+        int subCount;
 
         Scanner scanner = new Scanner(System.in);
 
+        System.out.print("Enter your current subscriber count: ");
+        subCount = Integer.parseInt(scanner.nextLine());
         System.out.print("Enter a growth rate percentage: ");
         channelGrowthRate = Double.parseDouble(scanner.nextLine());
         // System.out.println("Channel growth rate is: " + channelGrowthRate);
@@ -42,7 +45,7 @@ public class YouTubeChannelDriver {
         System.out.println();
 
         int monthsPassed = 0;
-        int newSubscriberCount = channel.subscribers();
+        int newSubscriberCount = subCount;
         
 
         while (newSubscriberCount < subGoal) {
