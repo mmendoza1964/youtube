@@ -17,15 +17,43 @@ public class YouTubeChannelDriver {
         // YouTubeChannel channel = new YouTubeChannel(
         //         "Counting Numbers", 11000);
 
-        int subscribers;
-        double channelGrowthRate;
+        System.out.println("Hello, welcome to the channel growth driver!\n");
 
-        System.out.println("Hello, welcome to the channel growth driver!");
+        YouTubeChannel channel = getChannelInfo();
+        displayChannelStatus(channel);
 
-        // displayChannelStatus(channel);
+        menu();
 
         // timeToSubGoal(channel);
 
+    }
+
+    private static void menu() {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+
+        System.out.println("Please select an option: ");
+        System.out.println("1: Growth rate needed to reach sub goal in x months.");
+        System.out.println("2: Time it will take to reach sub goal with given growth rate.");
+
+        choice = Integer.parseInt(scanner.nextLine());
+        
+        scanner.close();
+    }
+
+    private static YouTubeChannel getChannelInfo() {
+        String name;
+        int subCount;
+
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("What is your channel name? ");
+        name = scanner.nextLine();
+        System.out.print("What is your channel subscriber count? ");
+        subCount = Integer.parseInt(scanner.nextLine());
+        
+        scanner.close();
+        return new YouTubeChannel(name, subCount);
     }
 
     private static void timeToSubGoal() {
@@ -64,6 +92,6 @@ public class YouTubeChannelDriver {
 
     private static void displayChannelStatus(YouTubeChannel channel) {
         System.out.println("Channel name: " + channel.name());
-        System.out.println("Subscriber count: " + channel.subscribers());
+        System.out.println("Subscriber count: " + channel.subscribers() + "\n");
     }
 }
