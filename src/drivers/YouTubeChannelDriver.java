@@ -14,61 +14,61 @@ import java.util.Scanner;
 
 public class YouTubeChannelDriver {
     public static void main(String[] args) {
-        // YouTubeChannel channel = new YouTubeChannel(
-        //         "Counting Numbers", 11000);
+        YouTubeChannel channel = new YouTubeChannel(
+                "Counting Numbers", 11000);
 
         System.out.println("Hello, welcome to the channel growth driver!\n");
+        Scanner scanner = new Scanner(System.in);
 
-        YouTubeChannel channel = getChannelInfo();
+        // YouTubeChannel channel = getChannelInfo(scanner);
         displayChannelStatus(channel);
 
-        menu();
-
-        // timeToSubGoal(channel);
-
+        int choice = menu(scanner);
+        
+        if (choice == 1) {
+            System.out.println("Choice 1 chosen. (Not yet implemented)");
+        } else {
+            timeToSubGoal(channel, scanner);
+        }
+        
+        scanner.close();
     }
 
-    private static void menu() {
-        Scanner scanner = new Scanner(System.in);
+    private static int menu(Scanner scanner) {
         int choice;
 
         System.out.println("Please select an option: ");
         System.out.println("1: Growth rate needed to reach sub goal in x months.");
         System.out.println("2: Time it will take to reach sub goal with given growth rate.");
-
-        choice = Integer.parseInt(scanner.nextLine());
         
-        scanner.close();
+        choice = scanner.nextInt();
+        System.out.println("Choice is: " + choice);
+
+        return choice;
     }
 
-    private static YouTubeChannel getChannelInfo() {
+    private static YouTubeChannel getChannelInfo(Scanner scanner) {
         String name;
         int subCount;
 
-        Scanner scanner = new Scanner(System.in);
-        
         System.out.print("What is your channel name? ");
         name = scanner.nextLine();
         System.out.print("What is your channel subscriber count? ");
-        subCount = Integer.parseInt(scanner.nextLine());
-        
-        scanner.close();
+        subCount = scanner.nextInt();
+        System.out.println("subcount is: " + subCount);
         return new YouTubeChannel(name, subCount);
     }
 
-    private static void timeToSubGoal() {
+    private static void timeToSubGoal(YouTubeChannel channel, Scanner scanner) {
         double channelGrowthRate;
         int subCount;
 
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Enter your current subscriber count: ");
-        subCount = Integer.parseInt(scanner.nextLine());
+        subCount = channel.subscribers();
+        
         System.out.print("Enter a growth rate percentage: ");
-        channelGrowthRate = Double.parseDouble(scanner.nextLine());
-        // System.out.println("Channel growth rate is: " + channelGrowthRate);
+        channelGrowthRate = scanner.nextDouble();
         System.out.print("Enter your subscriber goal: ");
-        int subGoal = Integer.parseInt(scanner.nextLine());
+        int subGoal = scanner.nextInt();
         System.out.println("Sub goal is: " + subGoal);
         System.out.println();
 
